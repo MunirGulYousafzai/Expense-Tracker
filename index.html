@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="output.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        darkMode: 'class',
+    }
+    </script> -->
+
+    <!-- my custom css -->
+
+    <style>
+
+    /* From Uiverse.io by Galahhad */ 
+
+        .ui-switch {
+        /* switch */
+        --switch-bg: rgb(167, 197, 227);
+        --switch-width: 42px;
+        --switch-height: 18px;
+        /* circle */
+        --circle-diameter: 22px;
+        --circle-bg: rgb(0, 56, 146);
+        --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
+        }
+
+        .ui-switch input {
+        display: none;
+        }
+
+        .slider {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: var(--switch-width);
+        height: var(--switch-height);
+        background: var(--switch-bg);
+        border-radius: 999px;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.549);
+
+        }
+
+        .slider .circle {
+        top: calc(var(--circle-inset) * -1);
+        left: 0;
+        width: var(--circle-diameter);
+        height: var(--circle-diameter);
+        position: absolute;
+        background: var(--circle-bg);
+        border-radius: inherit;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");
+        background-repeat: no-repeat;
+        background-position: center center;
+        -webkit-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        -o-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+        ;
+        }
+
+        .slider .circle::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: inherit;
+        -webkit-transition: all 500ms;
+        -o-transition: all 500ms;
+        transition: all 500ms;
+        opacity: 0;
+        }
+
+        /* actions */
+        .ui-switch input:checked+.slider{
+        background-color: rgb(7, 68, 130);  
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.593);
+        }
+        .ui-switch input:checked+.slider .circle {
+        left: calc(100% - var(--circle-diameter));
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");
+        }
+
+        .ui-switch input:active+.slider .circle::before {
+        -webkit-transition: 0s;
+        -o-transition: 0s;
+        transition: 0s;
+        opacity: 1;
+        width: 0;
+        height: 0;
+        }
+
+        body{
+            background-color: #EDF2FA;
+        }
+
+        /* left side */
+        #addBalance-addExpense-contents, #allExpenses{
+            border: 1px solid rgba(0, 0, 0, 0.295);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        #balance-content input, #expense-content input,#category{
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.379);
+            border: 1px solid rgba(0, 0, 0, 0.295);
+            border-radius: 8px;
+        }
+        #showBalance p, #showExpense p{
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.579);
+            border: 1px solid rgba(0, 0, 0, 0.295);
+            border-radius: 8px;
+        }
+        html.dark input, html.dark #category{
+            border:1px solid white;
+            color:white;
+        }
+        li.expenseItem,#balance-content,#expense-content{
+            border: 1px solid rgba(0, 0, 0, 0.263);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.311);
+        }
+        html.dark li.expenseItem,html.dark #expense-content,html.dark #balance-content{
+            border: 1px solid rgba(255, 255, 255, 0.459);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.521);
+        }
+        #expense-content input,#expense-content select, #expense-content label{
+            margin: 10px;
+        }
+        input[type="date"]:not(:valid) {
+            color: #9ca3af; /* Tailwind gray-400 for placeholder-like effect */
+        } 
+        #expenseBtn-wrapper{
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        } 
+        button#expenseBtn{
+            box-shadow:0 0 20px rgba(0, 0, 0, 0.422);
+            margin: 0 auto;
+        }
+        .expenseItem span{
+            margin: 0px 10px;
+        }
+        .edit-btn, .delete-btn {
+            pointer-events: auto;
+            width: 25px;
+        }
+        .edit-btn:active, .delete-btn:active{
+            transform: scale(1.05);
+        }
+        .edit-btn img, .delete-btn img{
+            width: 25px;
+        }
+        @media screen and (max-width: 600px){
+            .edit img, .delete img{
+            width: 20px;
+        }
+        #showExpense{
+            display: none;
+        }
+        }
+    </style>
+
+    
+</head>
+<body class=" text-black   dark:bg-gray-500 dark:text-white transition-all duration-300 p-0 m-0">
+    <div id="toogle-wrapper" class="flex justify-end mr-15">
+        <!-- 🌗 Dark Mode Toggle Switch (from Uiverse.io) -->
+        <label class="ui-switch mt-4 ml-4 inline-block">
+            <input type="checkbox" id="toggleDark" />
+            <div class="slider">
+            <div class="circle"></div>
+            </div>
+        </label>
+    </div>
+    <div id="main-content" class="p-0 m-0">
+        <div id="allInputs" class="md:mx-35 p-5 ">
+            <div id="addBalance-addExpense-contents" class="w-full bg-white">
+            <h1  class="sm:text-4xl text-3xl text-center sm:pb-10 sm:pt-5 py-5 text-blue-500 font-semibold">Munir Gul Personal Expense Tracker</h1> 
+
+            <!-- balance content like input balance and balance button -->
+            <div id="balance-content" class="w-full  py-5 px-5 rounded-2xl mb-5 ">
+                <div id="showBalance-totalExpense" class="sm:flex sm:justify-around">
+                    <div id="showBalance" class="sm:w-1/3 w-full text-[20px]  sm:text-[22px]   dark:text-green-500 text-green-600 font-medium">Current Balance<p id="showBalancePlace" class="p-2 sm:p-3.5 mt-2 w-full text-[18px]  text-gray-600 dark:text-white font-semibold">$500000000000</p></div>
+                    <div id="showExpense" class="sm:w-1/3 w-full text-[20px]   dark:text-red-500 text-red-600 font-medium">Total Expense<p id="showExpensePlace" class="p-2 sm:p-3.5 mt-2 w-full text-[18px]  text-gray-600 dark:text-white font-semibold">$40000</p></div>
+                </div>
+                <div id="input-addBtn" class="sm:flex sm:justify-center gap-20 mt-4 sm:mt-8 pb-3 w-full">
+                    <input type="number" name="inputBalance" id="inputBalance" class="outline-none sm:w-1/4   w-full focus:outline-none py-1 sm:py-2 px-3 text-[16px] text-black dark:text-white" placeholder="Enter Balance">
+                    <div id="addBtn-wrapper" class="flex justify-center mt-3 sm:block sm:justify-start sm:mt-0 w-full sm:w-1/4"><button id="balanceBtn" class="w-full text-white sm:py-2   px-10 sm:px-0 py-1.5 bg-green-600 rounded-2xl text-[16px] ">Add Balance</button></div>
+                </div>
+            </div>
+            
+
+            <!-- expense content like adding description, amount , category, date etc and add expense button -->
+             <div id="expense-content" class="w-full  p-5 rounded-2xl ">
+                <h2 class="text-2xl text-center w-full pb-3 font-medium text-teal-600">Add Expenses</h2>
+                <input type="text" name="description" id="description"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 w-2/5 sm:px-2 text-black dark:text-white text-[12px] sm:text-[16px]" placeholder="Description">
+                <input type="number" name="amount" id="amount"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 w-2/5 sm:px-2  text-black dark:text-white text-[12px] sm:text-[16px]" placeholder="Amount">
+                <label for="category" class="inline-block outline-none focus:outline-none md:px-2 py-1.5 md:w-13 sm:px-2 sm:w-10 w-2/5 text-sm font-medium  text-black dark:text-white text-[12px] sm:text-[16px]">Category:</label>
+                <select id="category"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 sm:px-2 inline-block w-2/5  text-black dark:text-white text-[12px] sm:text-[16px]">
+                    <option value="food" class="sm:w-1/4 w-2/5">🍔 Food</option>
+                    <option value="education">🎓 Education</option> 
+                    <option value="transport">🚗 Transport</option>
+                    <option value="shopping">🛍️ Shopping</option>
+                    <option value="entertainment">🎬 Entertainment</option>
+                    <option value="utilities">💡 Utilities</option>
+                    <option value="others">📦 Others</option>
+                </select>
+                <input type="date"  name="date" id="date" class="outline-none focus:outline-none sm:px-2 py-1.5 sm:w-1/4 w-2/5 text-[12px] sm:text-[16px]">
+                <input type="time"  name="time" id="time" class="outline-none focus:outline-none sm:px-2 px-2 py-1.5 sm:w-1/4 w-2/5 text-[12px] sm:text-[16px]" >
+                <div id="expenseBtn-wrapper" class="mx-auto sm:mx-0"><button id="expenseBtn" class=" px-10  py-1.5 bg-red-600 text-white rounded-2xl ">Add Expense</button></div>
+             </div>
+            </div>
+
+            <!-- expense list -->
+             <div id="allExpenses" class="bg-[#E7E9EB] h-auto mt-5">
+                <h1 class="text-3xl pl-2.5 w-full pb-3 font-medium text-teal-600">Expenses List</h1>
+                <ul id="expenseList" >
+                    <!-- all expense item will be added here  -->
+                </ul>
+             </div>
+             
+
+        </div>
+
+    
+  
+  
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
