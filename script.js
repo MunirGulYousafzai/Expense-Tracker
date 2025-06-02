@@ -211,7 +211,9 @@ function displayExpense() {
 
         const span4 = document.createElement("span");
         span4.classList.add("block", "sm:inline", "w-1/4", "text-gray-500", "md:w-28","dark:sm:font-medium","dark:text-gray-400");
-        span4.textContent = item.date;
+        const [year, month, day] = item.date.split("-");
+        const formattedDate = `${day}-${month}-${year}`;
+        span4.textContent = formattedDate;
 
         const span5 = document.createElement("span");
         span5.classList.add("block", "sm:inline", "w-1/4", "text-gray-400", "md:w-20");

@@ -138,8 +138,8 @@
             border: 1px solid rgba(0, 0, 0, 0.295);
             border-radius: 8px;
         }
-        html.dark #showBalance p,html.dark #showExpense p{
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.374);
+        html.dark  #showBalance p,html.dark #showExpense p{
+            /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.374); */
             border: 1px solid rgba(255, 255, 255, 0.295);
         }
         li.expenseItem,#balance-content,#expense-content{
@@ -220,13 +220,13 @@
             <h1 id="userName" class="sm:text-4xl text-3xl al text-center sm:pb-10 sm:pt-5 py-5 text-blue-500 dark:text-blue-400 font-semibold">Your Personal Expense Tracker</h1> 
 
             <!-- balance content like input balance and balance button -->
-            <div id="balance-content" class="w-full  py-5 px-5 rounded-2xl mb-5 dark:bg-gray-700">
+            <div id="balance-content" class="w-full  py-5 px-5 rounded-2xl mb-5 bg-white dark:bg-gray-700">
                 <div id="showBalance-totalExpense" class="sm:flex sm:justify-around">
                     <div id="showBalance" class="sm:w-1/3 w-full text-[20px]  sm:text-[22px]   dark:text-green-400 text-green-600 font-medium">Current Balance<p id="showBalancePlace" class="p-2 sm:p-3.5 mt-2 w-full text-[18px]  text-gray-600 dark:text-white font-semibold">$500000000000</p></div>
                     <div id="showExpense" class="sm:w-1/3 w-full text-[20px]   dark:text-red-500 text-red-600 font-medium">Total Expense<p id="showExpensePlace" class="p-2 sm:p-3.5 mt-2 w-full text-[18px]  text-gray-600 dark:text-white font-semibold">$40000</p></div>
                 </div>
                 <div id="input-addBtn" class="sm:flex sm:justify-center gap-20 mt-4 sm:mt-8 pb-3 w-full">
-                    <input type="number" name="inputBalance" id="inputBalance" class="outline-none sm:w-1/4   w-full focus:outline-none py-1 sm:py-2 px-3 text-[16px] text-black dark:text-white" placeholder="Enter Balance">
+                    <input type="number" name="inputBalance" id="inputBalance" class="outline-none sm:w-1/4   w-full focus:outline-none py-1 sm:py-2 px-3 text-[18px] text-black dark:text-white" placeholder="Enter Balance">
                     <div id="addBtn-wrapper" class="flex justify-center mt-3 sm:block sm:justify-start sm:mt-0 w-full sm:w-1/4"><button id="balanceBtn" class="w-full text-white sm:py-2   px-10 sm:px-0 py-1.5 bg-green-600 rounded-2xl text-[16px] ">Add Balance</button></div>
                 </div>
             </div>
@@ -235,10 +235,10 @@
             <!-- expense content like adding description, amount , category, date etc and add expense button -->
              <div id="expense-content" class="w-full  p-5 rounded-2xl ">
                 <h2 id="expenseTitle" class="sm:text-3xl text-2xl text-center w-full pb-3 font-medium text-teal-600 dark:text-teal-500">Add Expenses</h2>
-                <input type="text" name="description" id="description"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 w-2/5 sm:px-2 text-black dark:text-white text-[12px] sm:text-[16px]" placeholder="Description">
-                <input type="number" name="amount" id="amount"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 w-2/5 sm:px-2  text-black dark:text-white text-[12px] sm:text-[16px]" placeholder="Amount">
-                <label for="category" class="inline-block outline-none focus:outline-none md:px-2 py-1.5 md:w-13 sm:px-2 sm:w-12 w-2/5  sm:font-medium font-normal  text-black dark:text-white text-[12px] sm:text-[14px]">Category:</label>
-                <select id="category"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 sm:px-2 inline-block w-2/5  text-black dark:text-white text-[12px] sm:text-[16px]">
+                <input type="text" name="description" id="description"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 w-2/5 sm:px-2 text-black dark:text-white text-[14px] sm:text-[16px]" placeholder="Description">
+                <input type="number" name="amount" id="amount"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 w-2/5 sm:px-2  text-black dark:text-white text-[14px] sm:text-[16px]" placeholder="Amount">
+                <label for="category" class="inline-block outline-none focus:outline-none md:px-2 py-1.5 md:w-13 sm:px-2 sm:w-12 w-2/5  sm:font-medium font-normal  text-black dark:text-white text-[14px] sm:text-[14px]">Category:</label>
+                <select id="category"  class="outline-none focus:outline-none px-2 py-1.5 sm:w-1/4 sm:px-2 inline-block w-2/5  text-black dark:text-white text-[14px] sm:text-[16px]">
                     <option value="Food" class="sm:w-1/4 w-2/5">🍔 Food</option>
                     <option value="Education">🎓 Education</option> 
                     <option value="Transport">🚗 Transport</option>
@@ -247,8 +247,10 @@
                     <option value="Utilities">💡 Utilities</option>
                     <option value="Others">📦 Others</option>
                 </select>
-                <input type="date"  name="date" id="date" class="outline-none focus:outline-none sm:px-2 py-1.5 sm:w-1/4 w-2/5 text-[12px] sm:text-[16px]">
-                <input type="time"  name="time" id="time" class="outline-none focus:outline-none sm:px-2 px-2 py-1.5 sm:w-1/4 w-2/5 text-[12px] sm:text-[16px]" >
+                <label for="date" class=" mb-1 text-[14px] font-normal text-black inline-block dark:text-white sm:hidden  w-2/5">Choose Date:</label>
+                <input type="date"  name="date" id="date" class="outline-none focus:outline-none sm:px-2 py-1.5 sm:w-1/4 w-2/5 text-[14px] sm:text-[16px]">
+                <label for="date" class=" mb-1 text-[14px] font-normal text-black inline-block dark:text-white sm:hidden  w-2/5">Choose Time:</label>
+                <input type="time"  name="time" id="time" class="outline-none focus:outline-none sm:px-2 px-2 py-1.5 sm:w-1/4 w-2/5 text-[14px] sm:text-[16px]" >
                 <div id="expenseBtn-wrapper" class="mx-auto sm:mx-0"><button id="expenseBtn" class=" px-10  py-1.5 bg-red-600 text-white rounded-2xl ">Add Expense</button></div>
              </div>
             </div>
